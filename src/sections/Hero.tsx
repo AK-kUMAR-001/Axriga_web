@@ -274,16 +274,22 @@ const Hero = () => {
             {/* Tech pattern */}
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,0,0,0.2)" strokeWidth="0.5" strokeDasharray="5 5" />
+              {/* Added Complexity for Attraction */}
+              <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(255,0,0,0.4)" strokeWidth="0.2" strokeDasharray="2 2" />
+              <path d="M50 5 L50 15 M50 85 L50 95 M5 50 L15 50 M85 50 L95 50" stroke="rgba(255,0,0,0.5)" strokeWidth="1" />
             </svg>
           </div>
           
-          {/* Core Glow Rings */}
+          {/* Enhanced Core Glow Rings */}
           <div className="absolute inset-12 rounded-full bg-gradient-radial from-red-500/50 via-red-600/30 to-transparent animate-pulse-glow" />
           <div className="absolute inset-16 rounded-full bg-gradient-radial from-red-400/60 via-red-500/40 to-transparent animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute inset-[4.5rem] rounded-full border border-red-500/40 animate-spin-slow" style={{ animationDuration: '4s' }} />
           
           {/* Center Core */}
           <div className="absolute inset-20 rounded-full bg-gradient-radial from-white via-red-300 to-red-600 arc-glow-intense flex items-center justify-center">
-            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 arc-glow-intense animate-pulse" />
+            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 arc-glow-intense animate-pulse flex items-center justify-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-red-500/50 animate-ping" />
+            </div>
           </div>
           
           {/* Expanding Pulse Rings */}

@@ -174,6 +174,15 @@ const WhatWeOffer = () => {
                 {/* Animated Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
+                {/* Image Background */}
+                <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                    <img 
+                        src={`https://placehold.co/600x400/000000/FFF?text=${encodeURIComponent(service.title)}`} 
+                        alt={service.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                </div>
+                
                 {/* Shimmer Effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />

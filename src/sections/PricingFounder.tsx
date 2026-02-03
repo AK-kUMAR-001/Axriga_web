@@ -150,21 +150,42 @@ const PricingFounder = () => {
           {/* Arc Reactor Glow */}
           <div className="absolute top-1/2 right-10 -translate-y-1/2 w-40 h-40 rounded-full bg-red-600/10 blur-3xl animate-pulse-glow" />
 
-          <div className="relative z-10">
-            <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-white mb-6">
-              About the <span className="text-red-500">Founder</span>
-            </h3>
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            {/* Profile Image Section */}
+            <div className="relative shrink-0">
+              <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500/50 shadow-[0_0_30px_rgba(220,38,38,0.3)] group">
+                <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+                   {/* Placeholder for Akshay Kumaran's image */}
+                   <span className="text-gray-500 text-center px-4">Akshay Kumaran<br/>(Founder Image)</span>
+                </div>
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/40 to-transparent opacity-60" />
+              </div>
+              {/* Decorative Elements */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-red-500/10 rounded-full blur-xl animate-pulse-glow" />
+              <div className="absolute -top-4 -left-4 w-20 h-20 bg-red-500/10 rounded-full blur-xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
+            </div>
 
-            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl">
-              AXRIGA is built by someone who has stood on national hackathon stages, 
-              faced tough jury questions, refined ideas through failure, and delivered 
-              winning solutions.
-            </p>
-
-            <div className="mt-6 p-4 rounded-lg bg-red-500/5 border border-red-500/20">
-              <p className="text-red-400 italic">
-                "That real experience shapes how every project is designed, explained, and defended."
+            {/* Content Section */}
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-3xl md:text-4xl font-orbitron font-bold text-white mb-2">
+                Akshay <span className="text-red-500">Kumaran</span>
+              </h3>
+              <p className="text-red-400 font-rajdhani text-lg tracking-widest mb-6 uppercase">
+                Founder & Lead Developer
               </p>
+
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                AXRIGA is built by someone who has stood on national hackathon stages, 
+                faced tough jury questions, refined ideas through failure, and delivered 
+                winning solutions.
+              </p>
+
+              <div className="p-4 rounded-lg bg-red-500/5 border border-red-500/20 inline-block">
+                <p className="text-red-400 italic">
+                  "That real experience shapes how every project is designed, explained, and defended."
+                </p>
+              </div>
             </div>
           </div>
         </div>

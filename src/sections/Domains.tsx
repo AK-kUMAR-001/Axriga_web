@@ -30,10 +30,7 @@ const Domains = () => {
   const headingRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
-  const ring1Ref = useRef<HTMLDivElement>(null);
-  const ring2Ref = useRef<HTMLDivElement>(null);
-  const ring3Ref = useRef<HTMLDivElement>(null);
-  const ring4Ref = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -54,39 +51,8 @@ const Domains = () => {
         }
       );
 
-      // Center arc reactor rings rotation
-      if (ring1Ref.current) {
-        gsap.to(ring1Ref.current, {
-          rotation: 360,
-          duration: 20,
-          repeat: -1,
-          ease: 'none',
-        });
-      }
-      if (ring2Ref.current) {
-        gsap.to(ring2Ref.current, {
-          rotation: -360,
-          duration: 15,
-          repeat: -1,
-          ease: 'none',
-        });
-      }
-      if (ring3Ref.current) {
-        gsap.to(ring3Ref.current, {
-          rotation: 360,
-          duration: 25,
-          repeat: -1,
-          ease: 'none',
-        });
-      }
-      if (ring4Ref.current) {
-        gsap.to(ring4Ref.current, {
-          rotation: -360,
-          duration: 30,
-          repeat: -1,
-          ease: 'none',
-        });
-      }
+      // Center arc reactor rings rotation - REMOVED for clean planetary look
+
 
       // Orbit container entrance
       gsap.fromTo(
@@ -172,216 +138,51 @@ const Domains = () => {
           </p>
         </div>
 
-        {/* Orbital Layout */}
+      {/* Orbital Layout - Planetary System */}
         <div
           ref={orbitRef}
           className="relative mx-auto opacity-0"
-          style={{ width: '500px', height: '500px', maxWidth: '100%' }}
+          style={{ width: '600px', height: '600px', maxWidth: '100%' }}
         >
-          {/* SVG Connection Lines - Spider Web */}
-          <svg
-            className="absolute inset-0 w-full h-full"
-            viewBox="0 0 500 500"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <defs>
-              <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgba(255, 0, 0, 0.6)" />
-                <stop offset="50%" stopColor="rgba(255, 50, 50, 0.3)" />
-                <stop offset="100%" stopColor="rgba(255, 0, 0, 0.1)" />
-              </linearGradient>
-              <filter id="lineGlow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            {/* Outer web ring */}
-            <circle cx="250" cy="250" r="180" fill="none" stroke="url(#webGradient)" strokeWidth="0.5" opacity="0.3" />
-            
-            {/* Middle web ring */}
-            <circle cx="250" cy="250" r="120" fill="none" stroke="url(#webGradient)" strokeWidth="0.5" opacity="0.4" />
-            
-            {/* Inner web ring */}
-            <circle cx="250" cy="250" r="60" fill="none" stroke="url(#webGradient)" strokeWidth="0.5" opacity="0.5" />
-
-            {/* Connection lines from center to each domain */}
-            {domains.map((_, index) => {
-              const angle = (index * 45 - 90) * (Math.PI / 180);
-              const x2 = 250 + 180 * Math.cos(angle);
-              const y2 = 250 + 180 * Math.sin(angle);
-              return (
-                <line
-                  key={index}
-                  x1="250"
-                  y1="250"
-                  x2={x2}
-                  y2={y2}
-                  stroke="url(#webGradient)"
-                  strokeWidth="1"
-                  filter="url(#lineGlow)"
-                  opacity="0.6"
-                />
-              );
-            })}
-
-            {/* Cross connections for web effect */}
-            {domains.map((_, index) => {
-              const angle1 = (index * 45 - 90) * (Math.PI / 180);
-              const angle2 = ((index + 1) * 45 - 90) * (Math.PI / 180);
-              const x1 = 250 + 120 * Math.cos(angle1);
-              const y1 = 250 + 120 * Math.sin(angle1);
-              const x2 = 250 + 120 * Math.cos(angle2);
-              const y2 = 250 + 120 * Math.sin(angle2);
-              return (
-                <line
-                  key={`cross-${index}`}
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke="url(#webGradient)"
-                  strokeWidth="0.5"
-                  opacity="0.3"
-                />
-              );
-            })}
-          </svg>
-
-          {/* Tony Stark Style Center Arc Reactor */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <div className="relative w-40 h-40 md:w-48 md:h-48">
-              {/* Outer rotating ring with markers */}
-              <div 
-                ref={ring1Ref}
-                className="absolute -inset-4 rounded-full border-2 border-red-500/30"
-                style={{ transformOrigin: 'center center' }}
-              >
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-2 h-3 bg-red-500/50 rounded-full"
-                    style={{
-                      top: '50%',
-                      left: '50%',
-                      transform: `rotate(${i * 30}deg) translateY(-92px) translateX(-50%)`,
-                      transformOrigin: '50% 92px',
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Second rotating ring */}
-              <div 
-                ref={ring2Ref}
-                className="absolute -inset-2 rounded-full border border-red-500/40"
-                style={{ transformOrigin: 'center center' }}
-              >
-                {[...Array(8)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-1.5 h-4 bg-red-500/40 rounded-full"
-                    style={{
-                      top: '50%',
-                      left: '50%',
-                      transform: `rotate(${i * 45}deg) translateY(-78px) translateX(-50%)`,
-                      transformOrigin: '50% 78px',
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Third ring - tech pattern */}
-              <div 
-                ref={ring3Ref}
-                className="absolute inset-0 rounded-full border border-red-500/50"
-                style={{ transformOrigin: 'center center' }}
-              >
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,0,0,0.3)" strokeWidth="0.5" strokeDasharray="8 4" />
-                </svg>
-              </div>
-
-              {/* Fourth inner ring */}
-              <div 
-                ref={ring4Ref}
-                className="absolute inset-4 rounded-full border border-red-500/60"
-                style={{ transformOrigin: 'center center' }}
-              >
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-1 h-3 bg-red-500/60 rounded-full"
-                    style={{
-                      top: '50%',
-                      left: '50%',
-                      transform: `rotate(${i * 60}deg) translateY(-42px) translateX(-50%)`,
-                      transformOrigin: '50% 42px',
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Glow layers */}
-              <div className="absolute inset-6 rounded-full bg-gradient-radial from-red-500/50 via-red-600/30 to-transparent animate-pulse-glow" />
-              <div className="absolute inset-8 rounded-full bg-gradient-radial from-red-400/60 via-red-500/40 to-transparent animate-pulse-glow" style={{ animationDelay: '0.3s' }} />
-              <div className="absolute inset-10 rounded-full bg-gradient-radial from-white/80 via-red-300 to-red-500 arc-glow-intense" />
-
-              {/* Center core */}
-              <div 
-                ref={centerRef}
-                className="absolute inset-14 rounded-full bg-white arc-glow-intense flex items-center justify-center"
-              >
-                <span className="text-red-600 font-orbitron font-bold text-xl md:text-2xl">8+</span>
-              </div>
-
-              {/* Expanding pulse rings */}
-              <div className="absolute -inset-4 rounded-full border-2 border-red-500/20 animate-ping" style={{ animationDuration: '3s' }} />
-              <div className="absolute -inset-2 rounded-full border border-red-500/15 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.5s' }} />
-              <div className="absolute inset-0 rounded-full border border-red-500/10 animate-ping" style={{ animationDuration: '3s', animationDelay: '1s' }} />
-            </div>
+          {/* Central Star/Core */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gradient-to-br from-red-600 to-red-900 shadow-[0_0_100px_rgba(220,38,38,0.6)] flex items-center justify-center z-20 border-4 border-red-500/30">
+             <div className="text-center">
+                <span className="block text-4xl font-bold text-white font-orbitron">8+</span>
+                <span className="block text-sm text-red-200 uppercase tracking-widest mt-1">Domains</span>
+             </div>
+             {/* Core Pulse */}
+             <div ref={centerRef} className="absolute inset-0 rounded-full border border-red-400/50 animate-ping opacity-20" />
           </div>
 
-          {/* Orbiting Domain Icons */}
+          {/* Orbit Rings */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-red-500/20 border-dashed animate-spin-slow" style={{ animationDuration: '60s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-red-500/10" />
+
+          {/* Orbiting Planets (Icons) */}
           {domains.map((domain, index) => {
             const Icon = domain.icon;
-            const angle = (index * 45 - 90) * (Math.PI / 180);
-            const radius = 180;
-            const x = 50 + (radius / 250) * 50 * Math.cos(angle);
-            const y = 50 + (radius / 250) * 50 * Math.sin(angle);
-            
+            const total = domains.length;
+            const delay = -(20 / total) * index; // Negative delay for immediate positioning
+
             return (
               <div
                 key={index}
-                className="orbit-icon absolute z-10"
+                className="orbit-icon absolute top-1/2 left-1/2 w-24 h-24 -ml-12 -mt-12 flex flex-col items-center justify-center gap-2 group cursor-pointer z-30 hover:scale-125 hover:z-40"
                 style={{
-                  left: `${x}%`,
-                  top: `${y}%`,
-                  transform: 'translate(-50%, -50%)',
-                }}
+                  '--orbit-radius': '225px',
+                  animation: 'orbit 20s linear infinite',
+                  animationDelay: `${delay}s`,
+                } as React.CSSProperties}
               >
-                <div className="group relative">
-                  {/* Glow container */}
-                  <div className="absolute inset-0 rounded-2xl bg-red-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-150" />
-                  
-                  {/* Icon Container */}
-                  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-2 border-red-500/40 flex items-center justify-center group-hover:border-red-500 group-hover:bg-red-500/20 transition-all duration-300 group-hover:scale-110 arc-glow">
-                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-red-400 group-hover:text-red-300 transition-colors" />
-                  </div>
-                  
-                  {/* Label */}
-                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <span className="text-xs md:text-sm text-white font-rajdhani bg-black/90 px-3 py-1.5 rounded-full border border-red-500/50 arc-glow">
-                      {domain.name}
-                    </span>
-                  </div>
-
-                  {/* Connection dot */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-red-500 opacity-0 group-hover:opacity-100 transition-opacity animate-pulse" />
+                {/* Icon Container */}
+                <div className="relative w-14 h-14 rounded-2xl bg-black/80 border border-red-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.2)] group-hover:bg-red-600 group-hover:border-red-400 group-hover:shadow-[0_0_40px_rgba(220,38,38,0.8)] transition-all duration-300">
+                  <Icon className="w-7 h-7 text-red-500 group-hover:text-white transition-colors duration-300" />
                 </div>
+                
+                {/* Label - Always Visible */}
+                <span className="text-sm font-bold text-gray-300 bg-black/50 px-2 py-1 rounded backdrop-blur-sm border border-red-500/10 group-hover:text-white group-hover:border-red-500/50 transition-all duration-300 whitespace-nowrap">
+                  {domain.name}
+                </span>
               </div>
             );
           })}
