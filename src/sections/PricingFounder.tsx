@@ -156,9 +156,9 @@ const PricingFounder = () => {
               <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500/50 shadow-[0_0_30px_rgba(220,38,38,0.3)] group">
                 <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
                    <img 
-                      src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
+                      src="/profile.png" 
                       alt="Akshay Kumaran"
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                    />
                 </div>
                 {/* Overlay Gradient */}

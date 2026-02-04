@@ -163,8 +163,15 @@ const Domains = () => {
           style={{ width: '600px', height: '600px', maxWidth: '100%' }}
         >
           {/* Central Star/Core */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gradient-to-br from-red-600 to-red-900 shadow-[0_0_100px_rgba(220,38,38,0.6)] flex items-center justify-center z-20 border-4 border-red-500/30">
-             <div className="text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center z-20">
+             {/* Rotating Circle Image */}
+             <img 
+               src="/circle.png" 
+               alt="Core" 
+               className="absolute inset-0 w-full h-full object-contain animate-spin-slow" 
+               style={{ animationDuration: '10s' }}
+             />
+             <div className="text-center relative z-10">
                 <span className="block text-4xl font-bold text-white font-orbitron">8+</span>
                 <span className="block text-sm text-red-200 uppercase tracking-widest mt-1">Domains</span>
              </div>
