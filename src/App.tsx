@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import FromIdeaToImpact from './sections/FromIdeaToImpact';
 import WhereStudentsStuck from './sections/WhereStudentsStuck';
@@ -58,8 +59,12 @@ function App() {
 
   return (
     <main className="relative bg-black min-h-screen overflow-x-hidden">
+      <Navbar />
+      
       {/* Hero Section */}
-      <Hero />
+      <div id="home">
+        <Hero />
+      </div>
 
       {/* From Idea to Impact */}
       <FromIdeaToImpact />
@@ -77,13 +82,19 @@ function App() {
       <SuccessPath />
 
       {/* What We Offer */}
-      <WhatWeOffer />
+      <div id="services">
+        <WhatWeOffer />
+      </div>
 
       {/* Domains We Cover */}
-      <Domains />
+      <div id="domains">
+        <Domains />
+      </div>
 
       {/* Recent Projects */}
-      <RecentProjects />
+      <div id="projects">
+        <RecentProjects />
+      </div>
 
       {/* Resume Building & Career Guidance */}
       <ResumeCareer />
@@ -95,10 +106,14 @@ function App() {
       <Reviews />
 
       {/* Pricing & Founder */}
-      <PricingFounder />
+      <div id="pricing">
+        <PricingFounder />
+      </div>
 
       {/* Contact */}
-      <Contact />
+      <div id="contact">
+        <Contact />
+      </div>
 
       {/* Footer */}
       <Footer />
