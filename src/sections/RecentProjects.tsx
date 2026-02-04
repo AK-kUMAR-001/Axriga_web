@@ -10,25 +10,25 @@ const projects = [
     title: 'Smart Landslide Vehicle Detection System',
     domain: 'AI / Computer Vision',
     description: 'Detects vehicles stuck in landslide-affected areas and alerts rescue teams in real time.',
-    image: 'https://images.unsplash.com/photo-1599393710787-873b37f39572?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://placehold.co/800x600/111111/ef4444?text=Landslide+Detection',
   },
   {
     title: 'Drone-Based Precision Agriculture System',
     domain: 'Drones / IoT / AI',
     description: 'Identifies unhealthy crops and sprays fertilizer only where needed, reducing waste and cost.',
-    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://placehold.co/800x600/111111/ef4444?text=Precision+Agriculture',
   },
   {
     title: 'Smart Biofiltration System for Greywater Reuse',
     domain: 'Environmental Technology / IoT',
     description: 'A low-cost system designed to safely reuse household greywater.',
-    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://placehold.co/800x600/111111/ef4444?text=Biofiltration+System',
   },
   {
     title: 'Intelligent Navigation & Risk Alert System',
     domain: 'AI / Mapping',
     description: 'Provides shortest and safest routes with alerts for blocked or unsafe paths.',
-    image: 'https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=2069&auto=format&fit=crop',
+    image: 'https://placehold.co/800x600/111111/ef4444?text=Smart+Navigation',
   },
 ];
 
