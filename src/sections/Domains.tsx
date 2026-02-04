@@ -109,10 +109,28 @@ const Domains = () => {
     return () => ctx.revert();
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!centerRef.current) return;
+    
+    const { clientX, clientY } = e;
+    const x = (clientX / window.innerWidth - 0.5) * 2;
+    const y = (clientY / window.innerHeight - 0.5) * 2;
+
+    gsap.to(centerRef.current, {
+      x: x * 30,
+      y: y * 30,
+      rotationY: x * 20,
+      rotationX: -y * 20,
+      duration: 1,
+      ease: 'power2.out',
+    });
+  };
+
   return (
     <section
       ref={sectionRef}
       className="relative w-full py-24 md:py-32 bg-black overflow-hidden"
+      onMouseMove={handleMouseMove}
     >
       {/* Background Glow */}
       <div className="absolute inset-0">
@@ -167,7 +185,7 @@ const Domains = () => {
             return (
               <div
                 key={index}
-                className="orbit-icon absolute top-1/2 left-1/2 w-24 h-24 -ml-12 -mt-12 flex flex-col items-center justify-center gap-2 group cursor-pointer z-30 hover:scale-125 hover:z-40"
+                className="orbit-icon absolute top-1/2 left-1/2 w-32 h-32 -ml-16 -mt-16 flex flex-col items-center justify-center gap-2 group cursor-pointer z-30 hover:scale-125 hover:z-40"
                 style={{
                   '--orbit-radius': '225px',
                   animation: 'orbit 20s linear infinite',
@@ -175,8 +193,8 @@ const Domains = () => {
                 } as React.CSSProperties}
               >
                 {/* Icon Container */}
-                <div className="relative w-14 h-14 rounded-2xl bg-black/80 border border-red-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.2)] group-hover:bg-red-600 group-hover:border-red-400 group-hover:shadow-[0_0_40px_rgba(220,38,38,0.8)] transition-all duration-300">
-                  <Icon className="w-7 h-7 text-red-500 group-hover:text-white transition-colors duration-300" />
+                <div className="relative w-20 h-20 rounded-2xl bg-black/80 border border-red-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.2)] group-hover:bg-red-600 group-hover:border-red-400 group-hover:shadow-[0_0_40px_rgba(220,38,38,0.8)] transition-all duration-300">
+                  <Icon className="w-10 h-10 text-red-500 group-hover:text-white transition-colors duration-300" />
                 </div>
                 
                 {/* Label - Always Visible */}
@@ -192,7 +210,7 @@ const Domains = () => {
         <div className="mt-20 flex justify-center gap-8 md:gap-16">
           {[
             { value: '8+', label: 'Tech Domains' },
-            { value: '50+', label: 'Technologies' },
+            { value: '100+', label: 'Technologies' },
             { value: '∞', label: 'Possibilities' },
           ].map((stat, index) => (
             <div key={index} className="text-center">
