@@ -13,7 +13,7 @@ const Hero = () => {
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const profileRef = useRef<HTMLDivElement>(null);
+  // Profile ref removed
 
   // Particle System
   useEffect(() => {
@@ -149,13 +149,7 @@ const Hero = () => {
         });
       }
 
-      // Profile section animation
-      tl.fromTo(
-        profileRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
-        '-=0.5'
-      );
+      // Profile section animation removed
 
       // Headline word-by-word reveal
       if (headlineRef.current) {
@@ -285,6 +279,11 @@ const Hero = () => {
           <div className="absolute inset-16 rounded-full bg-gradient-radial from-red-400/60 via-red-500/40 to-transparent animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
           <div className="absolute inset-[4.5rem] rounded-full border border-red-500/40 animate-spin-slow" style={{ animationDuration: '4s' }} />
           
+          {/* FILLING THE VOID: New Energy Field & Data Ring */}
+          <div className="absolute inset-10 rounded-full bg-gradient-radial from-red-900/40 to-transparent animate-pulse" />
+          <div className="absolute inset-20 rounded-full border border-red-500/30 border-dashed animate-spin" style={{ animationDuration: '10s' }} />
+          <div className="absolute inset-24 rounded-full border-2 border-red-600/20 border-t-transparent animate-spin" style={{ animationDuration: '5s', animationDirection: 'reverse' }} />
+
           {/* Center Core */}
           <div className="absolute inset-20 rounded-full bg-gradient-radial from-white via-red-300 to-red-600 arc-glow-intense flex items-center justify-center">
             <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 arc-glow-intense animate-pulse flex items-center justify-center">
@@ -299,53 +298,25 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Profile Section - Top Right */}
-      <div
-        ref={profileRef}
-        className="absolute top-20 right-4 md:right-10 z-20 opacity-0"
-      >
-        <div className="group relative">
-          {/* Profile Image Container */}
-          <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-red-500/50 group-hover:border-red-500 transition-all duration-300">
-            {/* Placeholder - User will add their image as profile.png/jpeg */}
-            <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] flex items-center justify-center">
-              <span className="text-gray-500 text-xs text-center px-2">Add profile.png</span>
-            </div>
-            {/* Glow Effect */}
-            <div className="absolute inset-0 rounded-full arc-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-          
-          {/* Status Indicator */}
-          <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-black border-2 border-red-500 flex items-center justify-center">
-            <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-          </div>
-          
-          {/* Name Tag */}
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="text-xs text-red-400 font-mono bg-black/80 px-2 py-1 rounded border border-red-500/30">
-              Founder
-            </span>
-          </div>
-        </div>
-      </div>
+      {/* Profile Section - Removed as per request */}
+
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-[250px] md:mt-[300px]">
-        {/* Main Headline */}
-        <h1
-          ref={headlineRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold text-white mb-6 perspective-1000"
-        >
-          {headlineWords.map((word, index) => (
-            <span
-              key={index}
-              className="word inline-block mr-3 md:mr-4 opacity-0"
-              style={{ textShadow: '0 0 40px rgba(255, 0, 0, 0.3), 0 0 80px rgba(255, 0, 0, 0.1)' }}
-            >
-              {word}
-            </span>
-          ))}
-        </h1>
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20 md:mt-0">
+        <div className="relative inline-block mb-6 md:mb-8">
+          <div className="absolute -inset-4 bg-black/60 blur-xl rounded-full opacity-80" /> {/* Added backdrop for legibility */}
+          <h1 ref={headlineRef} className="relative text-5xl md:text-7xl lg:text-8xl font-orbitron font-bold leading-tight">
+            {headlineWords.map((word, index) => (
+              <span
+                key={index}
+                className="word inline-block mr-3 md:mr-4 opacity-0"
+                style={{ textShadow: '0 0 40px rgba(255, 0, 0, 0.3), 0 0 80px rgba(255, 0, 0, 0.1)' }}
+              >
+                {word}
+              </span>
+            ))}
+          </h1>
+        </div>
 
         {/* Tagline */}
         <p

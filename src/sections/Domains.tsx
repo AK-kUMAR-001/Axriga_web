@@ -164,16 +164,15 @@ const Domains = () => {
         >
           {/* Central Star/Core */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center z-20">
-             {/* Rotating Circle Image */}
-             <img 
-               src="/circle.png" 
-               alt="Core" 
-               className="absolute inset-0 w-full h-full object-contain animate-spin-slow" 
-               style={{ animationDuration: '10s' }}
-             />
+             {/* CSS-Only Stunning Core */}
+             <div className="absolute inset-0 rounded-full bg-gradient-radial from-red-600/40 via-red-900/20 to-transparent animate-pulse-glow" />
+             <div className="absolute inset-2 rounded-full border-2 border-red-500/30 border-t-transparent animate-spin" style={{ animationDuration: '4s' }} />
+             <div className="absolute inset-4 rounded-full border-2 border-red-400/20 border-b-transparent animate-spin" style={{ animationDuration: '7s', animationDirection: 'reverse' }} />
+             <div className="absolute inset-8 rounded-full border border-red-500/10 border-dashed animate-spin-slow" />
+             
              <div className="text-center relative z-10">
-                <span className="block text-4xl font-bold text-white font-orbitron">8+</span>
-                <span className="block text-sm text-red-200 uppercase tracking-widest mt-1">Domains</span>
+                <span className="block text-4xl font-bold text-white font-orbitron">100+</span>
+                <span className="block text-sm text-red-200 uppercase tracking-widest mt-1">Technologies</span>
              </div>
              {/* Core Pulse */}
              <div ref={centerRef} className="absolute inset-0 rounded-full border border-red-400/50 animate-ping opacity-20" />
