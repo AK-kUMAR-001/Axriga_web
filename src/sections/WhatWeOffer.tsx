@@ -174,13 +174,9 @@ const WhatWeOffer = () => {
                 {/* Animated Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
-                {/* Image Background */}
-                <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-                    <img 
-                        src={`https://placehold.co/600x400/000000/FFF?text=${encodeURIComponent(service.title)}`} 
-                        alt={service.title}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
+                {/* Image Background - No Text to avoid intersection */}
+                <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
+                    <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black" />
                 </div>
                 
                 {/* Shimmer Effect */}
@@ -190,13 +186,21 @@ const WhatWeOffer = () => {
 
                 {/* Content */}
                 <div className="relative z-10 p-8">
-                  {/* Icon with Glow */}
-                  <div className="relative mb-6">
-                    <div className="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 group-hover:scale-110 transition-all duration-300 group-hover:rotate-3">
-                      <Icon className="w-8 h-8 text-red-500" />
+                  {/* Rotating Code-Based Circle Icon */}
+                  <div className="relative w-20 h-20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                    {/* Outer Rotating Ring */}
+                    <div className="absolute inset-0 rounded-full border border-red-500/30 border-dashed animate-spin-slow" style={{ animationDuration: '10s' }} />
+                    
+                    {/* Inner Rotating Ring (Reverse) */}
+                    <div className="absolute inset-2 rounded-full border-2 border-red-500/10 border-t-red-500/50 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '15s' }} />
+                    
+                    {/* Center Core */}
+                    <div className="absolute inset-6 rounded-full bg-red-500/5 border border-red-500/20 flex items-center justify-center group-hover:bg-red-500/10 transition-colors">
+                       <Icon className="w-6 h-6 text-red-500" />
                     </div>
-                    {/* Icon Glow */}
-                    <div className="absolute inset-0 w-16 h-16 rounded-2xl bg-red-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 bg-red-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   {/* Title */}
